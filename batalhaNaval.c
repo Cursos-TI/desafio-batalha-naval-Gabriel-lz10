@@ -5,6 +5,31 @@
 // Siga os comentários para implementar cada parte do desafio.
 
 int main() {
+    int tabuleiro[10][10];
+    int navioh[3] = {3, 3, 3};
+    int naviov[3] = {3, 3, 3};
+
+    for (int i = 0; i < 10; i++){
+        for(int j = 0; j < 10; j++){
+            tabuleiro[i][j] = 0;
+        }
+    }
+
+for(int k = 0; k < 3; k++){
+    tabuleiro[3][1 + k] = navioh[k];
+}
+
+for(int k = 0; k < 3; k++){
+    tabuleiro[7 +k][7] = naviov[k];
+}
+
+printf("Tabuleiro de Batalha Naval\n");
+    for ( int i = 0; i < 10; i++){
+        for (int j = 0; j < 10; j++){
+            printf("%d ", tabuleiro[i][j]);
+        }
+        printf("\n");
+    }
     // Nível Novato - Posicionamento dos Navios
     // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
