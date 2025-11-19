@@ -3,7 +3,8 @@
 // Desafio Batalha Naval - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
 // Siga os comentários para implementar cada parte do desafio.
-
+#define linha 3
+#define coluna 5
 int main() {
     // declarei e inicializei as váriaveis
     int tabuleiro[10][10]; // o tabuleiro eu só declarei 10x10
@@ -11,6 +12,7 @@ int main() {
     int naviov[3] = {3, 3, 3};
     int naviodg1[4] = {3, 3, 3, 3};
     int naviodg2[4] = {3, 3, 3, 3};
+    int habilidade[linha][coluna];
 // através do for iniializei o valor "0" a matriz "tabuleiro".
     for (int i = 0; i < 10; i++){
         for(int j = 0; j < 10; j++){
@@ -33,7 +35,41 @@ for (int i = 0; i < 4; i++){
 for (int i = 0; i < 4; i++){
     tabuleiro[0+i][4+i] = naviodg2[i];
 }
-//
+// aqui é onde eu descrevo onde quero o cone
+for (int i = 0; i < linha; i++){
+   for(int j = 0; j < coluna; j++){
+    if (j >= 2 - i && j <= 2 + i){
+        habilidade[i][j] = 1;}
+    else {
+        habilidade[i][j] = 0;
+    }
+    }
+}
+// onde for 1 vai substituir por 5
+for( int i = 0; i < linha; i++){
+    for (int j = 0; j < coluna; j++){
+        if(habilidade[i][j] == 1){
+            tabuleiro[i][j] = 5;
+        }
+        }
+    }
+
+    // cruz parte vertical
+for (int i = 0; i < 5; i++){
+    tabuleiro[5-2+ i][6] = 5;
+}
+ // cruz parte horizontal
+for (int i = 0; i < 5; i++){
+    tabuleiro[5][6 - 2 + i] = 5;}
+
+   // octaedro parte vertical
+    for (int i = 0; i < 3; i++){
+    tabuleiro[5-1+ i][1] = 5;}
+
+// octaedro parte horizontal
+      for (int i = 0; i < 3; i++){
+    tabuleiro[5][1-1+i] = 5;}
+
     printf("Tabuleiro de Batalha Naval\n");
     // esse loop aninhado é para imprimir o tabuleiro com os navios.
     for ( int i = 0; i < 10; i++){
@@ -42,27 +78,6 @@ for (int i = 0; i < 4; i++){
         }
         printf("\n");
     }
-    
-    // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
-
-    // Exemplos de exibição das habilidades:
-    // Exemplo para habilidade em cone:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 1 1 1 1 1
-    
-    // Exemplo para habilidade em octaedro:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 0 0 1 0 0
-
-    // Exemplo para habilidade em cruz:
-    // 0 0 1 0 0
-    // 1 1 1 1 1
-    // 0 0 1 0 0
 
     return 0;
 }
